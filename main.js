@@ -2,31 +2,47 @@ const menuEmail = document.querySelector(".navbar-email");
 const desktopMenu = document.querySelector(".desktop-menu");
 const menuHamIcon = document.querySelector(".menu");
 const menuCarritoIcon = document.querySelector(".navbar-shopping-cart")
+const productDetailClosedIcon = document.querySelector(".product-detail-closed");
 const mobileMenu = document.querySelector(".mobile-menu");
 const shoppingCartContainer = document.querySelector("#shoppingCartContainer");
 const cardsContainer = document.querySelector(".cards-container");
+const productDetail = document.querySelector("#productDetail");
 
 menuEmail.addEventListener("click", showMenuDesktop);
 menuHamIcon.addEventListener("click", showMenuMobile);
 menuCarritoIcon.addEventListener("click", toggleCarritoAside);
+productDetailClosedIcon.addEventListener("click", closedProductDetail);
 
 //mostrando menu de escritorio
 function showMenuDesktop(){
     shoppingCartContainer.classList.add("inactive");
     desktopMenu.classList.toggle("inactive");
+    productDetail.classList.add("inactive");
 }
 //mostrando menu en movil
 function showMenuMobile(){
     shoppingCartContainer.classList.add("inactive");
     mobileMenu.classList.toggle("inactive");
+    productDetail.classList.add("inactive");
 }
 //mostrando el carrito de compras en movil y escritorio
 function toggleCarritoAside(){
     shoppingCartContainer.classList.toggle("inactive");
     mobileMenu.classList.add("inactive");
     desktopMenu.classList.add("inactive");
+    productDetail.classList.add("inactive");
 }
-
+function openProductDetailAside(){
+    productDetail.classList.remove("inactive");
+    desktopMenu.classList.add("inactive");
+    shoppingCartContainer.classList.add("inactive");
+}
+function closedProductDetail(){
+    productDetail.classList.add("inactive");
+    desktopMenu.classList.add("inactive");
+    mobileMenu.classList.add("inactive");
+    shoppingCartContainer.classList.add("inactive");
+}
 const productList = [];
 productList.push({
     name: "bike",
@@ -85,6 +101,7 @@ for(product of productList){
 
     const productImg = document.createElement("img");
     productImg.setAttribute("src", product.image)
+    productImg.addEventListener("click", openProductDetailAside);
 
     const productInfo = document.createElement("div");
     productInfo.classList.add("product-info");
