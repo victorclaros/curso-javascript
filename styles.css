@@ -251,7 +251,7 @@
     width: 100%;
     height: 350px;
     object-fit: cover;
-    border-radius: 0 0 20px 20px;
+    border-radius: 5%;
   }
   #productDetail .product-info {
     margin: 24px 24px 0 24px;
